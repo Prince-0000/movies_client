@@ -2,7 +2,7 @@ import { setResult, setLoading } from '../../slices/disease'
 import { apiConnector } from '../apiConnector'
 import { endpoints } from '../api'
 import { toast } from 'react-hot-toast'
-
+import axios from 'axios'
 const {
     DIABETES_API,
     HEART_API,
@@ -52,27 +52,52 @@ export function heart(data, navigate) {
 export function diabetes(data, navigate) {
     return async (dispatch) => {
         const toastId = toast.loading("Loading...")
-        console.log(data)
+        console.log('backen-call',data)
+        console.log(DIABETES_API);
+
         dispatch(setLoading(true))
-        try {
-            const response = await apiConnector("POST", DIABETES_API, {
-                data,
-            })
+        
 
-            console.log("DIABETES API RESPONSE............", response)
+        const apiUrl = 'http://127.0.0.1:8000/predict/diabetes';
 
-            if (!response.data.success) {
-                throw new Error(response.data.message)
-            }
+        const requestData = {
+          "Pregnancies": parseInt(data.Pregnancies),
+          "Glucose": parseInt(data.Glucose),
+          "BloodPressure": parseInt(data.BloodPressure),
+          "SkinThickness":parseInt(data.SkinThickness),
+          "Insulin":parseInt(data.Insulin),
+          "BMI":parseFloat(data.BMI),
+          "DiabetesPedigreeFunction":parseFloat(data.DiabetesPedigreeFunction),
+          "Age": parseInt(data.Age)
+        };
+        
+        console.log('req data',requestData);
+        axios.post(apiUrl, requestData)
+          .then(response => {
+            console.log('Response:', response);
+          })
+          .catch(error => {
+            console.error('Error:', error.message);
+          });
+        // try {
+        //     const response = await apiConnector("POST", DIABETES_API, {
+        //         temp,
+        //     })
+
+        //     console.log("DIABETES API RESPONSE............", response)
+
+        //     if (!response.data.success) {
+        //         throw new Error(response.data.message)
+        //     }
 
 
-            dispatch(setResult())
+        //     dispatch(setResult())
 
-            navigate("/dashboard/diabetes")
-        } catch (error) {
-            console.log("LOGIN API ERROR............", error)
-            toast.error(error.response.data.message)
-        }
+        //     navigate("/dashboard/diabetes")
+        // } catch (error) {
+        //     console.log("LOGIN API ERROR............", error)
+        //     toast.error(error.response.data.message)
+        // }
         dispatch(setLoading(false))
         toast.dismiss(toastId)
     }

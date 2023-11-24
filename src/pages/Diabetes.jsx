@@ -5,6 +5,7 @@ import { diabetesData } from '../data/diabetesData';
 import { useForm } from 'react-hook-form';
 import {diabetes} from '../services/operations/backencall'
 import { useNavigate } from 'react-router-dom';
+
 const Diabetes = () => {
 
   const dispatch = useDispatch()
@@ -65,6 +66,7 @@ const Diabetes = () => {
                 </label>
                 <input
                   type='number'
+                  step='any'
                   className='bg-richblack-700 text-[16px] text-richblack-5 font-medium  h-[38px] rounded-md p-[12px] shadow-sm shadow-richblack-400'
                   name={`${data.name}`}
                   id={`${data.name}`}
