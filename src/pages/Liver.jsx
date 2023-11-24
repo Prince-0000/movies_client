@@ -22,8 +22,21 @@ const Liver = () => {
 
   const submitForm = async (data) => {
     try {
-      console.log(data);
-      dispatch(liver(data, navigate))
+
+      const formattedData = {
+        age: parseInt(data.age),
+        gender: parseInt(data.gender), 
+        Total_bilirubin: parseInt(data.Total_bilirubin),
+        conjucate_bilirubin: parseFloat(data.conjucate_bilirubin),
+        Alkaline_phosphate: parseInt(data.Alkaline_phosphate),
+        Alamin_Aminotransferase:parseInt(data.Alamin_Aminotransferase),
+        Asparated_Aminotransferase: parseInt(data.Asparated_Aminotransferase),
+        Total_Protiens: parseInt(data.Total_Protiens),
+        Albumin: parseInt(data.Albumin),
+        Alubumin_Globulin_ratio: parseFloat(data.Alubumin_Globulin_ratio),
+      };
+      console.log(formattedData);
+      dispatch(liver(formattedData, navigate))
 
     } catch (error) {
       console.log('SUBMITFORM ERROR...', error.message);
@@ -42,7 +55,7 @@ const Liver = () => {
         Asparated_Aminotransferase: "",
         Total_Protiens: "",
         Albumin: "",
-        Alubumin_Globulin_ratio: ""
+        Alubumin_Globulin_ratio:""
       });
     }
   }, [reset, isSubmitSuccessful]);
@@ -69,6 +82,7 @@ const Liver = () => {
                 </label>
                 <input
                   type='number'
+                  step = 'any'
                   className='bg-richblack-700 text-[16px] text-richblack-5 font-medium  h-[38px] rounded-md p-[12px] shadow-sm shadow-richblack-400'
                   name={`${data.name}`}
                   id={`${data.name}`}

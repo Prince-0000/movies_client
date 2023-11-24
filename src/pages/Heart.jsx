@@ -21,8 +21,25 @@ const Heart = () => {
 
   const submitForm = async (data) => {
     try {
-      console.log(data);
-      dispatch(heart(data, navigate))
+
+      const formattedData = {
+        age: parseInt(data.age),
+        sex: parseInt(data.sex),
+        cp: parseInt(data.cp),
+        trestbps: parseInt(data.trestbps),
+        chol: parseInt(data.chol),
+        fbs: parseInt(data.fbs),
+        restecg: parseInt(data.restecg),
+        thalach: parseInt(data.thalach),
+        exang: parseInt(data.exang),
+        oldpeak: parseFloat(data.oldpeak),
+        slope: parseInt(data.slope),
+        ca: parseInt(data.ca),
+        thal: parseInt(data.thal)
+      };
+
+    console.log(formattedData);
+      dispatch(heart(formattedData, navigate))
     } catch (error) {
       console.log('SUBMITFORM ERROR...', error.message);
     }
@@ -71,6 +88,7 @@ const Heart = () => {
                 </label>
                 <input
                   type='number'
+                  step = 'any'
                   className='bg-richblack-700 text-[16px] text-richblack-5 font-medium  h-[38px] rounded-md p-[12px] shadow-sm shadow-richblack-400'
                   name={`${data.name}`}
                   id={`${data.name}`}
