@@ -22,6 +22,8 @@ const Liver = () => {
 
   const submitForm = async (data) => {
     try {
+
+      
       console.log(data);
       dispatch(liver(data, navigate))
 
@@ -42,7 +44,7 @@ const Liver = () => {
         Asparated_Aminotransferase: "",
         Total_Protiens: "",
         Albumin: "",
-        Alubumin_Globulin_ratio: ""
+        Alubumin_Globulin_ratio:""
       });
     }
   }, [reset, isSubmitSuccessful]);
@@ -51,7 +53,7 @@ const Liver = () => {
     <div>
       {result ? (
         <div>
-          {/* Your result content */}
+              <h1 className=' text-white  text-xl mt-9'>{result}</h1>
         </div>
       ) : (
         <form
@@ -69,6 +71,7 @@ const Liver = () => {
                 </label>
                 <input
                   type='number'
+                  step = 'any'
                   className='bg-richblack-700 text-[16px] text-richblack-5 font-medium  h-[38px] rounded-md p-[12px] shadow-sm shadow-richblack-400'
                   name={`${data.name}`}
                   id={`${data.name}`}

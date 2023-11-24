@@ -5,12 +5,12 @@ export const sidebarLinks = [
     path: "/dashboard/heart",
     icon: "FaHeartbeat",
   },
-  {
-    id: 2,
-    name: "Kideny",
-    path: "/dashboard/kideny",
-    icon: "GiKidneys",
-  },
+  // {
+  //   id: 2,
+  //   name: "Kideny",
+  //   path: "/dashboard/kideny",
+  //   icon: "GiKidneys",
+  // },
   {
     id: 3,
     name: "Liver",
@@ -23,12 +23,12 @@ export const sidebarLinks = [
     path: "/dashboard/diabetes",
     icon: "FaProjectDiagram",
   },
-  {
-    id: 5,
-    name: "Cancer",
-    path: "/dashboard/cancer",
-    icon: "TbZodiacCancer",
-  },
+  // {
+  //   id: 5,
+  //   name: "Cancer",
+  //   path: "/dashboard/cancer",
+  //   icon: "TbZodiacCancer",
+  // },
   {
     id: 6,
     name: "Parkinson",

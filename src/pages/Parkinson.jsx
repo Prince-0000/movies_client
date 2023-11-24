@@ -20,7 +20,11 @@ const Parkinson = () => {
   
     const submitForm = async (data) => {
       try {
-        console.log(data);
+
+
+     
+
+        console.log('parkinson:',data);
         dispatch(parkinson(data, navigate))
       } catch (error) {
         console.log('SUBMITFORM ERROR...', error.message);
@@ -61,7 +65,7 @@ const Parkinson = () => {
       <div>
         {result ? (
           <div>
-            {/* Your result content */}
+             <h1 className=' text-white  text-xl mt-9'>{result}</h1>
           </div>
         ) : (
           <form
@@ -83,7 +87,7 @@ const Parkinson = () => {
                     className='bg-richblack-700 text-[16px] text-richblack-5 font-medium  h-[38px] rounded-md p-[12px] shadow-sm shadow-richblack-400'
                     name={`${data.name}`}
                     id={`${data.name}`}
-                    {...register(`${data.name}`, { required: true })}
+                    {...register(`${data.name}`, { required: false })}
                   />
                 </div>
               ))}

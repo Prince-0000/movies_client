@@ -79,38 +79,38 @@ export const parkinsonData = [
         name: "HNR",
         label: "HNR",
     },
+    // {
+    //     id:17,
+    //     name: "status",
+    //     label: "status",
+    // },
     {
         id:17,
-        name: "status",
-        label: "status",
-    },
-    {
-        id:18,
         name: "RPDE",
         label: "RPDE",
     },
     {
-        id:19,
+        id:18,
         name: "DFA",
         label: "DFA",
     },
     {
-        id:20,
+        id:19,
         name: "spread1",
         label: "spread1",
     },
     {
-        id:21,
+        id:20,
         name: "spread2",
         label: "spread2",
     },
     {
-        id:22,
+        id:21,
         name: "D2",
         label: "D2",
     },
     {
-        id:23,
+        id:22,
         name: "PPE",
         label: "PPE",
     },

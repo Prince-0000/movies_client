@@ -22,8 +22,21 @@ const Diabetes = () => {
 
   const submitForm = async (data) => {
     try {
-      console.log(data);
-      dispatch(diabetes(data, navigate))
+
+      const formattedData = {
+        Pregnancies: parseInt(data.Pregnancies),
+        Glucose: parseInt(data.Glucose),
+        BloodPressure: parseInt(data.BloodPressure),
+        SkinThickness: parseInt(data.SkinThickness) ,
+        Insulin: parseInt(data.Insulin),
+        BMI: parseFloat(data.BMI),
+        Age: parseInt(data.Age),
+        DiabetesPedigreeFunction: parseFloat(data.DiabetesPedigreeFunction),
+      };
+
+      console.log(formattedData);
+      dispatch(diabetes(formattedData, navigate))
+
     } catch (error) {
       console.log('SUBMITFORM ERROR...', error.message);
     }
@@ -32,21 +45,22 @@ const Diabetes = () => {
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset({
-        age: "",
-        bloodPressure: "",
-        bmiValue: "",
-        diabetesPedigreeFunctionValue: "",
-        glucoseLevel: "",
-        insulinLevel: "",
-        numberOfDiabetes: "",
-        skinThickness: ""
+        BMI: "",
+        Age: "",
+        BloodPressure: "",
+        DiabetesPedigreeFunction: "",
+        Glucose: "",
+        Insulin: "",
+        Pregnancies: "",
+        SkinThickness: ""
       });
     }
   }, [reset, isSubmitSuccessful]);
 
   return (
     <div>
-      {result ? (
+      {
+      result ? (
         <div>
           {/* Your result content */}
         </div>
@@ -66,7 +80,7 @@ const Diabetes = () => {
                 </label>
                 <input
                   type='number'
-                  step='any'
+                  step = 'any'
                   className='bg-richblack-700 text-[16px] text-richblack-5 font-medium  h-[38px] rounded-md p-[12px] shadow-sm shadow-richblack-400'
                   name={`${data.name}`}
                   id={`${data.name}`}
